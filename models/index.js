@@ -15,10 +15,12 @@ const User = require("./UserModel")(sequelize, Model, DataTypes);
 const Order = require("./OrderModel")(sequelize, Model, DataTypes);
 const Product = require("./ProductModel")(sequelize, Model, DataTypes);
 const Category = require("./CategoryModel")(sequelize, Model, DataTypes);
+const ProductCategory = require("./ProductCategoryModel")(
+  sequelize,
+  Model,
+  DataTypes
+);
 
 User.hasMany(Order);
-Order.belongsTo(User);
-Category.belongsToMany(Product, { through: "ProductCategory" });
-Product.belongsToMany(Category, { through: "ProductCategory" });
 
-module.exports = { sequelize, User, Order, Product, Category };
+module.exports = { sequelize, User, Order, Product, Category, ProductCategory };

@@ -35,6 +35,7 @@ module.exports = (sequelize, Model, DataTypes) => {
         validate: {
           notEmpty: true,
         },
+        defaultValue: false,
       },
       address: {
         type: DataTypes.STRING,
@@ -44,13 +45,6 @@ module.exports = (sequelize, Model, DataTypes) => {
         },
       },
       phone_number: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        validate: {
-          notEmpty: true,
-        },
-      },
-      order: {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
