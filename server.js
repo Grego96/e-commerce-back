@@ -4,9 +4,12 @@ const express = require("express");
 const routes = require("./routes");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
+const dbInitialSetup = require("./dbInitialSetup");
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
+
+dbInitialSetup();
 
 routes(app);
 
