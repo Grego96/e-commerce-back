@@ -9,6 +9,7 @@ module.exports = async () => {
       price: 1999,
       stock: 5,
       outstanding: true,
+      categoryId: 1
     },
     {
       name: "RadRunner 2",
@@ -17,6 +18,7 @@ module.exports = async () => {
       price: 1499,
       stock: 5,
       outstanding: false,
+      categoryId: 3
     },
     {
       name: "RadRunner Plus",
@@ -25,6 +27,7 @@ module.exports = async () => {
       price: 1899,
       stock: 5,
       outstanding: true,
+      categoryId: 2
     },
   ];
 
