@@ -23,12 +23,12 @@ module.exports = (sequelize, Model, DataTypes) => {
         },
       },
       image: {
-        type: DataTypes.STRING,
+        type: DataTypes.JSON,
         allowNull: false,
         validate: {
           notEmpty: true,
         },
-        defaultValue: "",
+        defaultValue: {},
       },
       price: {
         type: DataTypes.DECIMAL,
