@@ -6,7 +6,7 @@ module.exports = async () => {
     {
       first_name: "Gregory",
       last_name: "Hunkeler",
-      email: "grego@gmail.com",
+      email: "gregoryHunkeler@gmail.com",
       password: await bcrypt.hash("banana", 8),
       isADmin: true,
     },
