@@ -1,4 +1,5 @@
 const { Product } = require("../models");
+const { Category } = require("../models");
 
 async function index(req, res) {
   const products = await Product.findAll();
@@ -6,7 +7,7 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const product = await Product.findByPk(req.params.id);
+  const product = await Product.findByPk(req.params.id, { include: Category });
   res.status(200).json(product);
 }
 
