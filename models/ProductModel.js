@@ -23,7 +23,7 @@ module.exports = (sequelize, Model, DataTypes) => {
         },
       },
       image: {
-        type: DataTypes.JSON,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
         validate: {
           notEmpty: true,
