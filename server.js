@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cors = require("cors");
 
 const express = require("express");
 const routes = require("./routes");
@@ -8,6 +9,7 @@ const dbInitialSetup = require("./dbInitialSetup");
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 dbInitialSetup();
 
