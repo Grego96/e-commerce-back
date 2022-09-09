@@ -3,9 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 async function login(req, res) {
-  console.log(req.body);
   const user = await User.findOne({ where: { email: req.body.email } });
-  console.log(user);
 
   if (user) {
     const compare = await bcrypt.compare(req.body.password, user.password);
