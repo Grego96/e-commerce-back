@@ -12,8 +12,10 @@ async function show(req, res) {
 }
 
 async function productOutstanding(req, res) {
-  const product = await Product.findAll({ where: { outstanding: true } });
-  res.status(200).json(product);
+  const outstandingProducts = await Product.findAll({
+    where: { outstanding: true },
+  });
+  res.status(200).json(outstandingProducts);
 }
 
 module.exports = {
