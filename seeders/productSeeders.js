@@ -29,6 +29,15 @@ module.exports = async () => {
       outstanding: true,
       categoryId: 2
     },
+    {
+      name: "RadRunner Plus",
+      description:
+        "Perfect for errands, perfect for fun, this electric utility bike comes fully-loaded with exclusive accessories to elevate your everyday experiences. The passenger package invites you to bring a friend for the ride, while the premium headlight gives you the confidence to hit the road any time.",
+      price: 1899,
+      stock: 5,
+      outstanding: true,
+      categoryId: 4
+    },
   ];
 
   await Product.bulkCreate(products);
