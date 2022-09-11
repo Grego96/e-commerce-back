@@ -7,7 +7,10 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const product = await Product.findByPk(req.params.id, { include: Category });
+  const product = await Product.findOne(
+    { where: { slug: req.params.slug } },
+    { include: Category }
+  );
   res.status(200).json(product);
 }
 
