@@ -1,3 +1,5 @@
+const slugify = require("slugify");
+
 module.exports = (sequelize, Model, DataTypes) => {
   class Product extends Model {}
 
@@ -63,6 +65,19 @@ module.exports = (sequelize, Model, DataTypes) => {
       modelName: "product",
     }
   );
+
+  Product.beforeBulkCreate((products) => {
+    for (product of products) {
+      const slug = slugify(product.name, {
+        replacement: "-", // replace spaces with replacement character, defaults to `-`
+        remove: undefined, // remove characters that match regex, defaults to `undefined`
+        lower: true, // convert to lower case, defaults to `false`
+        locale: "es", // language code of the locale to use
+        trim: true, // trim leading and trailing replacement chars, defaults to `true`
+      });
+      product.slug = slug;
+    }
+  });
 
   return Product;
 };
