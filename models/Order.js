@@ -22,7 +22,6 @@ module.exports = (sequelize, Model, DataTypes) => {
           notEmpty: true,
         },
       },
-
       payment_method: {
         type: DataTypes.STRING,
         allowNull: false,
