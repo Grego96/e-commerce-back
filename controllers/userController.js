@@ -25,10 +25,27 @@ async function login(req, res) {
 }
 
 async function index(req, res) {
-  const users = User.findAll({
-    where: { isAdmin: false },
-  });
+  if (req.query.isAdmin) {
+    const adminUsers = User.findAll({
+      where: { isAdmin: true },
+    });
+    res.status(200).json({ user: adminUsers });
+  } else if (!req.query.isAdmin) {
+    const users = User.findAll({
+      where: { isAdmin: false },
+    });
+    res.status(200).json(users);
+  } else {
+    const users = User.findAll();
+    res.status(200).json(users);
+  }
+
   res.status(200).json(users);
 }
 
-module.exports = { login, index };
+async function show(req, res) {
+  const user = await User.findByPK(req.params.id);
+  res.status(200).json(user);
+}
+
+module.exports = { login, index, show };
