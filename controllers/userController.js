@@ -29,4 +29,9 @@ async function index(req, res) {
   res.status(200).json(users);
 }
 
-module.exports = { login, index };
+async function show(req, res) {
+  const user = await User.findByPK(req.params.id);
+  res.status(200).json(user);
+}
+
+module.exports = { login, index, show };
