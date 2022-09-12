@@ -2,8 +2,15 @@ const { Product } = require("../models");
 const { Category } = require("../models");
 
 async function index(req, res) {
-  const products = await Product.findAll();
-  res.status(200).json(products);
+  if (req.query.categoryId) {
+    const products = await Product.findAll({
+      where : {categoryId : req.query.categoryId}
+    });
+    res.status(200).json(products);
+  } else {
+    const products = await Product.findAll();
+    res.status(200).json(products);
+  }  
 }
 
 async function show(req, res) {

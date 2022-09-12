@@ -7,7 +7,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   const category = await Category.findOne({
-    where: { category: req.query.id },
+    where: { id: req.params.id },
   });
   res.status(200).json(category);
 }
