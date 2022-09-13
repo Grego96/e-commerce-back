@@ -40,7 +40,7 @@ delete /categories/:id
 
 ---------------Order routes------------------
 
-//publics//
+//privates//
 
 get /orders ---> query: userId
 get /orders/getAttributes

@@ -49,21 +49,28 @@ async function index(req, res) {
   if (req.query.isAdmin === "true") {
     const adminUsers = await User.findAll({
       where: { isAdmin: true },
+      attributes: { exclude: ['password'] }
     });
     res.status(200).json({ user: adminUsers });
   } else if (req.query.isAdmin === "false") {
     const users = await User.findAll({
       where: { isAdmin: false },
+      attributes: { exclude: ['password'] }
     });
     res.status(200).json(users);
   } else {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: { exclude: ['password'] }
+    });
     res.status(200).json(users);
   }
 }
 
 async function show(req, res) {
-  const user = await User.findByPk(req.params.id);
+  const user = await User.findAll({
+    where: { id: req.params.id },
+    attributes: { exclude: ['password'] }
+  });
   if (user) {
     res.status(200).json(user);
   } else {
