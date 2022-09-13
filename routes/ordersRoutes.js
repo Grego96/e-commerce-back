@@ -7,8 +7,17 @@ const verifyJwt = jwt({
   algorithms: ["HS256"],
 });
 const adminUserAccess = require("../middlewares/adminUserAccess");
-const ownerOrAdminAccess = require("../middlewares/ownerOrAdminAccess")
 
-routes.get("/orders" ,verifyJwt, adminUserAccess ,orderController.index)
+routes.get("/orders/userOrders", verifyJwt, orderController.getUserOrders);
 
-module.exports = routes
+routes.get("/orders", verifyJwt, adminUserAccess, orderController.index);
+routes.get("/orders/:id", verifyJwt, orderController.show);
+routes.get(
+  "/orders/getAttributes",
+  verifyJwt,
+  adminUserAccess,
+  orderController.getAttributes
+);
+routes.post("/orders", verifyJwt, orderController.store);
+
+module.exports = routes;
