@@ -46,3 +46,4 @@ get /orders ---> query: userId
 get /orders/getAttributes
 get /orders/userOrders
 post /orders
+delete /orders/:id
