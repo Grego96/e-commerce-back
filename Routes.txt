@@ -1,0 +1,45 @@
+---------------Product routes------------------
+
+//publics//
+
+get /products ---> query: categoryId
+get /products/:slug
+get /products/outstanding
+
+//privates// *only adm*
+
+post /products
+patch /products/:id
+delete /products/:id
+
+---------------User routes------------------
+
+//publics//
+
+post /login
+post /register
+
+//privates// *only adm*
+
+get /users ---> query: isAdmin: true || false || null
+get /users/:id
+delete /users/:id
+
+---------------Category routes------------------
+
+//publics//
+
+get /categories
+get /categories/:id
+
+//privates// *only adm*
+
+post /categories
+patch /categories
+delete /categories/:id
+
+---------------Order routes------------------
+
+//publics//
+
+get /orders

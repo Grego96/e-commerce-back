@@ -64,7 +64,11 @@ async function index(req, res) {
 
 async function show(req, res) {
   const user = await User.findByPk(req.params.id);
-  res.status(200).json(user);
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).json({message: "user not found"});
+  }
 }
 
 async function destroy(req, res) {

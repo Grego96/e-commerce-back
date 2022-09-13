@@ -1,9 +1,11 @@
-const productsRoutes = require("./productsRoutes");
-const usersRoutes = require("./usersRoutes");
-const categoriesRoutes = require("./categoriesRoutes")
+const productRoutes = require("./productsRoutes");
+const userRoutes = require("./usersRoutes");
+const categorieRoutes = require("./categoriesRoutes")
+const orderRoutes = require("./ordersRoutes")
 
 module.exports = (app) => {
-  app.use(productsRoutes);
-  app.use(usersRoutes);
-  app.use(categoriesRoutes)
+  app.use(productRoutes);
+  app.use(userRoutes);
+  app.use(categorieRoutes);
+  app.use(orderRoutes);
 };

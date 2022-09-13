@@ -6,19 +6,55 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const category = await Category.findOne({
-    where: { id: req.params.id },
-  });
-  res.status(200).json(category);
+  const category = await Category.findByPk(req.params.id);
+  if (category) {
+    res.status(200).json(category);
+  } else {
+    res.status(404).json({message: "category not found"});
+  }
 }
-// async function destroy(req, res) {
-//   const category = await Category.d({
-//     where: { category: req.query.id },
-//   });
-//   res.status(200).json(category);
-// }
+
+async function store(req, res) {
+  const [newCategory, created] = await Category.findOrCreate({
+    where: {
+      name: req.body.name,
+    },
+    defaults: {
+      name: req.body.name,
+    },
+  });
+  if (created) {
+    res.status(201).json({ message: "category created" });
+  } else {
+    res.status(400).json({ message: "category not created" });
+  }
+}
+
+async function edit(req, res) {
+  const category = await Category.findByPk(req.params.id);
+  if (product && req.body.name) {
+    await category.update({ name: req.body.name });
+    res.status(201).json({ message: "category updated" });
+  } else {
+    res.status(404).json({ message: "category not found" });
+  }
+}
+
+async function destroy(req, res) {
+  const category = await Category.findByPk(req.params.id);
+  if (category) {
+    await category.destroy();
+    res.status(200).json({ message: "category deleted" });
+  } else {
+    res.status(404).json({ message: "category not found" });
+  }
+}
+
 
 module.exports = {
   index,
   show,
+  destroy,
+  store,
+  edit
 };
