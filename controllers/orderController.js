@@ -42,7 +42,7 @@ async function store(req, res) {
     res.status(400).json(error);
   }
 }
-// Remove the specified resource from storage.
+
 async function destroy(req, res) {
   const order = await Order.findByPk(req.params.id);
   if (order) {
