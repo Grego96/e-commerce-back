@@ -7,7 +7,7 @@ async function index(req, res) {
     });
     res.status(200).json(products);
   } else {
-    const products = await Product.findAll();
+    const products = await Product.findAll({ include: Category });
     res.status(200).json(products);
   }
 }
@@ -20,7 +20,7 @@ async function show(req, res) {
   if (product) {
     res.status(200).json(product);
   } else {
-    res.status(404).json({message: "product not found"});
+    res.status(404).json({ message: "product not found" });
   }
 }
 

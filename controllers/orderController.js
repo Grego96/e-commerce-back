@@ -1,7 +1,7 @@
-const { Order } = require("../models");
+const { Order, User } = require("../models");
 
 async function index(req, res) {
-  const orders = await Order.findAll();
+  const orders = await Order.findAll({ include: User });
   if (orders) {
     res.status(200).json(orders);
   } else {
