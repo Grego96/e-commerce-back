@@ -4,8 +4,8 @@ module.exports = async () => {
   const orders = [
     {
       status: "Delivered",
-      product_json: {
-        product_1: {
+      product_json: [
+        {
           id: 3,
           name: "RadRunner Plus",
           description:
@@ -22,7 +22,7 @@ module.exports = async () => {
           updatedAt: "2022-09-13T14:38:12.000Z",
           categoryId: 2,
         },
-        product_2: {
+        {
           id: 1,
           name: "RadRover 6 Plus High Step",
           description:
@@ -39,14 +39,14 @@ module.exports = async () => {
           updatedAt: "2022-09-13T14:38:12.000Z",
           categoryId: 1,
         },
-      },
+      ],
       payment_method: "credit",
       userId: 1,
     },
     {
-      status: "Delivered",
-      product_json: {
-        product_1: {
+      status: "In Progress",
+      product_json: [
+        {
           id: 3,
           name: "RadRunner Plus",
           description:
@@ -63,14 +63,14 @@ module.exports = async () => {
           updatedAt: "2022-09-13T14:38:12.000Z",
           categoryId: 2,
         },
-      },
+      ],
       payment_method: "credit",
       userId: 1,
     },
     {
-      status: "Delivered",
-      product_json: {
-        product_1: {
+      status: "Canceled",
+      product_json: [
+        {
           id: 2,
           name: "RadRunner 2",
           description:
@@ -87,9 +87,33 @@ module.exports = async () => {
           updatedAt: "2022-09-13T14:38:12.000Z",
           categoryId: 3,
         },
-      },
+      ],
       payment_method: "credit",
       userId: 4,
+    },
+    {
+      status: "Completed",
+      product_json: [
+        {
+          id: 2,
+          name: "RadRunner 2",
+          description:
+            "This head turner delivers on more than just style: it can help you carry cargo, passengers, and even your morning joe. Factor in over 330 possible accessory combinations, and you can customize this moped-style ebike to your heart’s content. ",
+          images: {
+            image1: "US-RadRunner2-Green-Right-Quarter-View-(1).png",
+            image2: "US-RadRunner2-Green-Right-View.png",
+          },
+          price: "1499",
+          stock: 5,
+          outstanding: false,
+          slug: "radrunner-2",
+          createdAt: "2022-09-13T14:38:12.000Z",
+          updatedAt: "2022-09-13T14:38:12.000Z",
+          categoryId: 3,
+        },
+      ],
+      payment_method: "credit",
+      userId: 2,
     },
   ];
 

@@ -21,7 +21,7 @@ post /register
 
 //privates// *only adm*
 
-get /users ---> query: isAdmin: true || false || null
+get /users ---> query: isAdmin: true || false || allow empty
 get /users/:id
 delete /users/:id
 
@@ -42,4 +42,7 @@ delete /categories/:id
 
 //publics//
 
-get /orders
+get /orders ---> query: userId
+get /orders/getAttributes
+get /orders/userOrders
+post /orders

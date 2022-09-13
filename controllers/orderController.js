@@ -1,41 +1,79 @@
 const { Order, User } = require("../models");
 
 async function index(req, res) {
-  const orders = await Order.findAll({ include: User });
-  if (orders) {
-    res.status(200).json(orders);
+  if (req.query.userId) {
+    const orders = await Order.findAll({
+      where: { userId: req.query.userId },
+    });
+    if (orders) {
+      res.status(200).json(orders);
+    } else {
+      res.status(404).json({ message: "orders not found" });
+    }
   } else {
-    res.status(404).json({ message: "no orders found" });
+    const orders = await Order.findAll({ include: User });
+    if (orders) {
+      res.status(200).json(orders);
+    } else {
+      res.status(404).json({ message: "no orders found" });
+    }
   }
 }
 
-// Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  const order = await Order.findByPk(req.params.id);
+  if (order) {
+    res.status(200).json(order);
+  } else {
+    res.status(404).json({ message: "order not found" });
+  }
+}
 
-// Show the form for creating a new resource
-async function create(req, res) {}
-
-// Store a newly created resource in storage.
-async function store(req, res) {}
-
-// Show the form for editing the specified resource.
-async function edit(req, res) {}
-
-// Update the specified resource in storage.
-async function update(req, res) {}
-
+async function store(req, res) {
+  try {
+    const order = await Order.create({
+      status: req.body.status,
+      product_json: req.body.product_json,
+      payment_method: req.body.payment_method,
+      userId: req.auth.id,
+    });
+    res.status(201).json({ message: "order created" });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  const order = await Order.findByPk(req.params.id);
+  if (order) {
+    await order.destroy();
+    res.status(200).json({ message: "product deleted" });
+  } else {
+    res.status(400).json({ message: "product not found" });
+  }
+}
 
-// Otros handlers...
-// ...
+async function getAttributes(req, res) {
+  const atributes = await Order.getAttributes().status.values;
+  res.status(200).json(atributes);
+}
+
+async function getUserOrders(req, res) {
+  const orders = await Order.findAll({
+    where: { userId: req.auth.id },
+  });
+  if (orders) {
+    res.status(200).json(orders);
+  } else {
+    res.status(404).json({ message: "orders not found" });
+  }
+}
 
 module.exports = {
   index,
+  getAttributes,
+  getUserOrders,
   show,
-  create,
   store,
-  edit,
-  update,
   destroy,
 };
