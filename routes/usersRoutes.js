@@ -6,5 +6,6 @@ routes.post("/login", userContoller.login);
 routes.get("/users", userContoller.index);
 routes.get("/users/:id", userContoller.show);
 routes.post("/register", userContoller.register)
+routes.delete("/users/:id", userContoller.destroy)
 
 module.exports = routes;

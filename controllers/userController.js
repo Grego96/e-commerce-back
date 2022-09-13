@@ -67,4 +67,14 @@ async function show(req, res) {
   res.status(200).json(user);
 }
 
-module.exports = { login, index, show, register };
+async function destroy(req, res) {
+  const user = await User.findByPk(req.params.id);
+  if (user) {
+    await user.destroy();
+    res.status(200).json({ message: "user deleted" });
+  } else {
+    res.status(400).json({ message: "user not found" });
+  }
+}
+
+module.exports = { login, index, show, register, destroy };
