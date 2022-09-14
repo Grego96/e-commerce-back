@@ -7,7 +7,7 @@ async function login(req, res) {
     where: { email: req.body.email },
   });
   if (user) {
-    const compare = await bcrypt.compare(req.body.password, user.password);
+    const compare = await user.validatePassword(req.body.password);
     if (compare) {
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_STRING);
       const userInfo = await User.findOne({
@@ -24,24 +24,29 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const [user, created] = await User.findOrCreate({
-    where: {
-      email: req.body.email,
-    },
-    defaults: {
-      first_name: req.body.firstname,
-      last_name: req.body.lastname,
-      email: req.body.email,
-      password: req.body.password,
-      isAdmin: false,
-      address: req.body.address,
-      phone_number: req.body.phoneNumber
-    },
-  });
-  if (created) {
-    res.status(201).json({message: "User created"});
-  } else {
-    res.status(400).json({message: "User not created"});
+  try {
+    const [user, created] = await User.findOrCreate({
+      where: {
+        email: req.body.email,
+      },
+      defaults: {
+        first_name: req.body.firstname,
+        last_name: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password,
+        isAdmin: false,
+        address: req.body.address,
+        phone_number: req.body.phoneNumber,
+      },
+    });
+    if (created) {
+      res.status(201).json({ message: "User created" });
+    } else {
+      res.status(400).json({ message: "email already exist" });
+    }
+  } catch (error) {
+    res.status(400).json({ error });
+    return;
   }
 }
 
@@ -49,25 +54,32 @@ async function index(req, res) {
   if (req.query.isAdmin === "true") {
     const adminUsers = await User.findAll({
       where: { isAdmin: true },
+      attributes: { exclude: ["password"] },
     });
-    res.status(200).json({ user: adminUsers });
+    res.status(200).json({ users: adminUsers });
   } else if (req.query.isAdmin === "false") {
     const users = await User.findAll({
       where: { isAdmin: false },
+      attributes: { exclude: ["password"] },
     });
     res.status(200).json(users);
   } else {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: { exclude: ["password"] },
+    });
     res.status(200).json(users);
   }
 }
 
 async function show(req, res) {
-  const user = await User.findByPk(req.params.id);
+  const user = await User.findAll({
+    where: { id: req.params.id },
+    attributes: { exclude: ["password"] },
+  });
   if (user) {
     res.status(200).json(user);
   } else {
-    res.status(404).json({message: "user not found"});
+    res.status(404).json({ message: "user not found" });
   }
 }
 
@@ -81,4 +93,29 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { login, index, show, register, destroy };
+async function storeAdminUser(req, res) {
+  try {
+    const [user, created] = await User.findOrCreate({
+      where: {
+        email: req.body.email,
+      },
+      defaults: {
+        first_name: req.body.firstname,
+        last_name: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password,
+        isAdmin: true,
+      },
+    });
+    if (created) {
+      res.status(201).json({ message: "User Adm created" });
+    } else {
+      res.status(400).json({ message: "email already exist" });
+    }
+  } catch (error) {
+    res.status(400).json({ error });
+    return;
+  }
+}
+
+module.exports = { login, index, show, register, destroy, storeAdminUser };

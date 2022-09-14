@@ -13,6 +13,7 @@ routes.post("/register", userContoller.register);
 
 routes.get("/users",verifyJwt, adminUserAccess, userContoller.index);
 routes.get("/users/:id" ,verifyJwt, adminUserAccess, userContoller.show);
+routes.post("/users/registerAdm", verifyJwt, adminUserAccess, userContoller.storeAdminUser)
 routes.delete("/users/:id" ,verifyJwt, adminUserAccess, userContoller.destroy);
 
 module.exports = routes;
