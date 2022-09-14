@@ -23,6 +23,7 @@ post /register
 
 get /users ---> query: isAdmin: true || false || allow empty
 get /users/:id
+post /users/registerAdm
 delete /users/:id
 
 ---------------Category routes------------------

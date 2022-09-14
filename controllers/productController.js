@@ -20,7 +20,7 @@ async function show(req, res) {
   if (product) {
     res.status(200).json(product);
   } else {
-    res.status(404).json({message: "product not found"});
+    res.status(404).json({ message: "product not found" });
   }
 }
 
@@ -46,11 +46,14 @@ async function store(req, res) {
 }
 
 async function edit(req, res) {
-  //falta
   const product = await Product.findByPk(req.params.id);
   if (product) {
-    await product.update({ name: req.body.name });
-    res.status(201).json({ message: "product updated" });
+    try {
+      await product.update({ ...req.body });
+      res.status(201).json({ message: "product updated" });
+    } catch (error) {
+      res.status(404).json({ message: "error editing" });
+    }
   } else {
     res.status(404).json({ message: "product not found" });
   }
