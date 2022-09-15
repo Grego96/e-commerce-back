@@ -80,8 +80,13 @@ async function destroy(req, res) {
   }
 }
 
-async function getAttributes(req, res) {
+async function getStatusAttributes(req, res) {
   const atributes = await Order.getAttributes().status.values;
+  res.status(200).json(atributes);
+}
+
+async function getPaymentMethodAttributes(req, res) {
+  const atributes = await Order.getAttributes().payment_method.values;
   res.status(200).json(atributes);
 }
 
@@ -98,7 +103,8 @@ async function getUserOrders(req, res) {
 
 module.exports = {
   index,
-  getAttributes,
+  getStatusAttributes,
+  getPaymentMethodAttributes,
   getUserOrders,
   show,
   store,

@@ -38,7 +38,11 @@ module.exports = (sequelize, Model, DataTypes) => {
         },
       },
       payment_method: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM(
+          "Credit",
+          "Mercado pago",
+          "Paypal",
+        ),
         allowNull: false,
         validate: {
           notEmpty: true,
