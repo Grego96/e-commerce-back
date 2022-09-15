@@ -9,7 +9,12 @@ module.exports = (sequelize, Model, DataTypes) => {
         autoIncrement: true,
       },
       status: {
-        type: DataTypes.ENUM( "Canceled", "In Progress", "Delivered", "Completed"),
+        type: DataTypes.ENUM(
+          "Canceled",
+          "In Progress",
+          "Delivered",
+          "Completed"
+        ),
         allowNull: false,
         validate: {
           notEmpty: true,
