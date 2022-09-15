@@ -72,11 +72,21 @@ module.exports = (sequelize, Model, DataTypes) => {
         replacement: "-", // replace spaces with replacement character, defaults to `-`
         remove: undefined, // remove characters that match regex, defaults to `undefined`
         lower: true, // convert to lower case, defaults to `false`
-        locale: "es", // language code of the locale to use
+        locale: "en", // language code of the locale to use
         trim: true, // trim leading and trailing replacement chars, defaults to `true`
       });
       product.slug = slug;
     }
+  });
+  Product.beforeCreate((product) => {
+    const slug = slugify(product.name, {
+      replacement: "-", // replace spaces with replacement character, defaults to `-`
+      remove: undefined, // remove characters that match regex, defaults to `undefined`
+      lower: true, // convert to lower case, defaults to `false`
+      locale: "en", // language code of the locale to use
+      trim: true, // trim leading and trailing replacement chars, defaults to `true`
+    });
+    product.slug = slug;
   });
 
   return Product;
