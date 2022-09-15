@@ -41,7 +41,7 @@ async function store(req, res) {
   if (created) {
     res.status(201).json({ message: "product created" });
   } else {
-    res.status(400).json({ message: "error" });
+    res.status(400).json({ message: "product name already exist" });
   }
 }
 
@@ -50,7 +50,7 @@ async function edit(req, res) {
   if (product) {
     try {
       await product.update({ ...req.body });
-      res.status(201).json({ message: "product updated" });
+      res.status(200).json({ message: "product updated" });
     } catch (error) {
       res.status(404).json({ message: "error editing" });
     }

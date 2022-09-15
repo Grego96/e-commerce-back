@@ -32,9 +32,9 @@ async function store(req, res) {
 
 async function edit(req, res) {
   const category = await Category.findByPk(req.params.id);
-  if (product && req.body.name) {
+  if (category && req.body.name) {
     await category.update({ name: req.body.name });
-    res.status(201).json({ message: "category updated" });
+    res.status(200).json({ message: "category updated" });
   } else {
     res.status(404).json({ message: "category not found" });
   }
