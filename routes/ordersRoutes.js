@@ -10,14 +10,20 @@ const adminUserAccess = require("../middlewares/adminUserAccess");
 
 routes.get("/orders/userOrders", verifyJwt, orderController.getUserOrders);
 
-routes.get("/orders", verifyJwt, adminUserAccess, orderController.index);
-routes.get("/orders/:id", verifyJwt, orderController.show);
 routes.get(
-  "/orders/getAttributes",
+  "/orders/getStatusAttributes",
   verifyJwt,
   adminUserAccess,
-  orderController.getAttributes
+  orderController.getStatusAttributes
 );
+routes.get(
+  "/orders/getPaymentMethodAttributes",
+  verifyJwt,
+  adminUserAccess,
+  orderController.getPaymentMethodAttributes
+);
+routes.get("/orders", verifyJwt, adminUserAccess, orderController.index);
+routes.get("/orders/:id", verifyJwt, orderController.show);
 routes.post("/orders", verifyJwt, orderController.store);
 
 module.exports = routes;
