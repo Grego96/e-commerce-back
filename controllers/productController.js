@@ -14,7 +14,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   const product = await Product.findOne(
-    { where: $or[{ slug: req.params.slug }] },
+    { where: { slug: req.params.slug } },
     { include: Category }
   );
   if (product) {
@@ -36,6 +36,7 @@ async function store(req, res) {
       price: req.body.price,
       stock: req.body.stock,
       outstanding: req.body.outstanding,
+      categoryId: req.body.categoryId
     },
   });
   if (created) {
@@ -49,7 +50,6 @@ async function edit(req, res) {
   const product = await Product.findByPk(req.params.id);
   if (product) {
     try {
-      console.log(req.body);
       await product.update({ ...req.body });
       res.status(200).json({ message: "product updated" });
     } catch (error) {

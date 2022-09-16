@@ -66,6 +66,7 @@ async function index(req, res) {
   } else {
     const users = await User.findAll({
       attributes: { exclude: ["password"] },
+      order: [["isAdmin", "DESC"]],
     });
     res.status(200).json(users);
   }
