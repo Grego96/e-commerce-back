@@ -29,19 +29,6 @@ module.exports = async () => {
       categoryId: 3,
     },
     {
-      name: "RadRunner 2",
-      description:
-        "This head turner delivers on more than just style: it can help you carry cargo, passengers, and even your morning joe. Factor in over 330 possible accessory combinations, and you can customize this moped-style ebike to your heart’s content. ",
-      price: 1299,
-      images: {
-        image1: "US-RadRunner2-Green-Right-Quarter-View-(1).png",
-        image2: "US-RadRunner2-Green-Right-View.png",
-      },
-      stock: 2,
-      outstanding: false,
-      categoryId: 1,
-    },
-    {
       name: "RadRunner Plus",
       description:
         "Perfect for errands, perfect for fun, this electric utility bike comes fully-loaded with exclusive accessories to elevate your everyday experiences. The passenger package invites you to bring a friend for the ride, while the premium headlight gives you the confidence to hit the road any time.",

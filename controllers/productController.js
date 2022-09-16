@@ -14,7 +14,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   const product = await Product.findOne(
-    { where: $or[{ slug: req.params.slug }] },
+    { where: { slug: req.params.slug } },
     { include: Category }
   );
   if (product) {
