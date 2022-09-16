@@ -6,7 +6,7 @@ module.exports = async () => {
       status: "Delivered",
       product_json: [
         {
-          quantitiy: 20,
+          quantity: 20,
           product: {
             id: 3,
             name: "RadRunner Plus",
@@ -26,7 +26,7 @@ module.exports = async () => {
           },
         },
         {
-          quantitiy: 7,
+          quantity: 7,
           product: {
             id: 1,
             name: "RadRover 6 Plus High Step",
@@ -58,7 +58,7 @@ module.exports = async () => {
       status: "In Progress",
       product_json: [
         {
-          quantitiy: 2,
+          quantity: 2,
           product: {
             id: 3,
             name: "RadRunner Plus",
@@ -90,7 +90,7 @@ module.exports = async () => {
       status: "Canceled",
       product_json: [
         {
-          quantitiy: 1,
+          quantity: 1,
           product: {
             id: 2,
             name: "RadRunner 2",
@@ -122,7 +122,7 @@ module.exports = async () => {
       status: "Completed",
       product_json: [
         {
-          quantitiy: 5,
+          quantity: 5,
           product: {
             id: 2,
             name: "RadRunner 2",
