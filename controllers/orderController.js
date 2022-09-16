@@ -1,4 +1,4 @@
-const { Order, Product } = require("../models");
+const { Order, User, Product } = require("../models");
 
 async function index(req, res) {
   if (req.query.userId) {
@@ -11,7 +11,7 @@ async function index(req, res) {
       res.status(404).json({ message: "orders not found" });
     }
   } else {
-    const orders = await Order.findAll();
+    const orders = await Order.findAll({ include: User });
     if (orders) {
       res.status(200).json(orders);
     } else {

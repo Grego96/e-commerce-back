@@ -7,14 +7,14 @@ async function index(req, res) {
     });
     res.status(200).json(products);
   } else {
-    const products = await Product.findAll();
+    const products = await Product.findAll({ include: Category });
     res.status(200).json(products);
   }
 }
 
 async function show(req, res) {
   const product = await Product.findOne(
-    { where: { slug: req.params.slug } },
+    { where: $or[{ slug: req.params.slug }] },
     { include: Category }
   );
   if (product) {
@@ -49,13 +49,15 @@ async function edit(req, res) {
   const product = await Product.findByPk(req.params.id);
   if (product) {
     try {
+      console.log(req.body);
       await product.update({ ...req.body });
       res.status(200).json({ message: "product updated" });
     } catch (error) {
-      res.status(404).json({ message: "error editing" });
+      res.send(error);
+      // res.status(402).json({ message: "error editing" });
     }
   } else {
-    res.status(404).json({ message: "product not found" });
+    res.status(402).json({ message: "product not found" });
   }
 }
 
