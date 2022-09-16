@@ -26,10 +26,11 @@ module.exports = (sequelize, Model, DataTypes) => {
       },
       images: {
         type: DataTypes.JSON,
-        allowNull: false,
-        validate: {
-          notEmpty: true,
-        },
+        allowNull: true,
+        // validate: {
+        //   notEmpty: true,
+        // },
+        defaultValue: { image1: "defaultImage.png" },
       },
       price: {
         type: DataTypes.DECIMAL,
