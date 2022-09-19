@@ -45,7 +45,7 @@ async function register(req, res) {
       res.status(400).json({ message: "email already exist" });
     }
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(400).json({message: "A field is missing", error: error});
     return;
   }
 }
