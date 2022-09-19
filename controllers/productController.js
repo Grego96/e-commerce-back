@@ -25,25 +25,30 @@ async function show(req, res) {
 }
 
 async function store(req, res) {
-  const [newProduct, created] = await Product.findOrCreate({
-    where: {
-      name: req.body.name,
-    },
-    defaults: {
-      name: req.body.name,
-      description: req.body.description,
-      images: req.body.images,
-      price: req.body.price,
-      stock: req.body.stock,
-      outstanding: req.body.outstanding,
-      categoryId: req.body.categoryId
-    },
-  });
-  if (created) {
-    res.status(201).json({ message: "product created" });
-  } else {
-    res.status(400).json({ message: "product name already exist" });
+  try {
+    const [newProduct, created] = await Product.findOrCreate({
+      where: {
+        name: req.body.name,
+      },
+      defaults: {
+        name: req.body.name,
+        description: req.body.description,
+        images: req.body.images,
+        price: req.body.price,
+        stock: req.body.stock,
+        outstanding: req.body.outstanding,
+        categoryId: req.body.categoryId
+      },
+    });
+    if (created) {
+      res.status(201).json({ message: "product created" });
+    } else {
+      res.status(400).json({ message: "product name already exist" });
+    }
+  } catch (error) {
+    res.status(400).json({message: error})
   }
+  
 }
 
 async function edit(req, res) {
