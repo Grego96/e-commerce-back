@@ -8,12 +8,12 @@ const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 routes(app);
 
-// dbInitialSetup();
+dbInitialSetup();
 
 app.listen(APP_PORT, () => {
   console.log(`\n[Express] Servidor corriendo en el puerto ${APP_PORT}.`);
