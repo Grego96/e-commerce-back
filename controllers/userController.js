@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const db = require("../models")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -119,4 +120,16 @@ async function storeAdminUser(req, res) {
   }
 }
 
-module.exports = { login, index, show, register, destroy, storeAdminUser };
+async function resetDb(req, res) {
+  await db.sequelize.sync({ force: true });
+  console.log("[Database] ¡Las tablas fueron creadas!");
+  await require("../seeders/categorySeeders")();
+  await require("../seeders/productSeeders")();
+  await require("../seeders/userSeeders")();
+  await require("../seeders/orderSeeders")();
+
+  console.log("[Database] ¡Los datos de prueba fueron insertados!");
+  res.status(200).json({message: "Se reinició la base de datos"})
+}
+
+module.exports = { login, index, show, register, destroy, storeAdminUser, resetDb };

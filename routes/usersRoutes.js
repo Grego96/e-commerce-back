@@ -11,9 +11,15 @@ const adminUserAccess = require("../middlewares/adminUserAccess");
 routes.post("/login", userContoller.login);
 routes.post("/register", userContoller.register);
 
-routes.get("/users",verifyJwt, adminUserAccess, userContoller.index);
-routes.get("/users/:id" ,verifyJwt, adminUserAccess, userContoller.show);
-routes.post("/users/registerAdm", verifyJwt, adminUserAccess, userContoller.storeAdminUser)
-routes.delete("/users/:id" ,verifyJwt, adminUserAccess, userContoller.destroy);
+routes.get("/users", verifyJwt, adminUserAccess, userContoller.index);
+routes.get("/users/:id", verifyJwt, adminUserAccess, userContoller.show);
+routes.post(
+  "/users/registerAdm",
+  verifyJwt,
+  adminUserAccess,
+  userContoller.storeAdminUser
+);
+routes.delete("/users/:id", verifyJwt, adminUserAccess, userContoller.destroy);
+routes.post("/reset", verifyJwt, adminUserAccess, userContoller.resetDb);
 
 module.exports = routes;

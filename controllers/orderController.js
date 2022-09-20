@@ -50,7 +50,7 @@ async function store(req, res) {
   }
   try {
     const order = await Order.create({
-      status: req.body.status,
+      status: "In Progress",
       product_json: req.body.product_json,
       payment_method: req.body.payment_method,
       userId: req.auth.id,
