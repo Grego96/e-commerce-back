@@ -1,4 +1,12 @@
 const { Category, Product } = require("../models");
+const fs = require("fs");
+const path = require("path");
+const formidable = require("formidable");
+const { createClient } = require("@supabase/supabase-js");
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
 
 async function index(req, res) {
   if (req.query.categoryId) {
@@ -26,29 +34,56 @@ async function show(req, res) {
 
 async function store(req, res) {
   try {
-    const [newProduct, created] = await Product.findOrCreate({
-      where: {
-        name: req.body.name,
-      },
-      defaults: {
-        name: req.body.name,
-        description: req.body.description,
-        images: req.body.images,
-        price: req.body.price,
-        stock: req.body.stock,
-        outstanding: req.body.outstanding,
-        categoryId: req.body.categoryId
-      },
+    const form = formidable({
+      multiples: true,
+      keepExtensions: true,
     });
-    if (created) {
-      res.status(201).json({ message: "product created" });
-    } else {
-      res.status(400).json({ message: "product name already exist" });
-    }
+
+    form.parse(req, async (err, fields, files) => {
+      const images = [];
+      for (let i = 0; i < Object.entries(files).length; i++) {
+        const img = Object.entries(files)[i][1];
+        const { data, error } = await supabase.storage
+          .from("e-commerce-imgs")
+          .upload(img.newFilename, fs.createReadStream(img.filepath), {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: img.mimetype,
+          });
+        images.push(
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/" +
+            data.Key
+        );
+      }
+
+      const imagesJSON = images.reduce(
+        (k, v, i) => ({ ...k, ["image" + (i + 1)]: v }),
+        {}
+      );
+
+      const [newProduct, created] = await Product.findOrCreate({
+        where: {
+          name: fields.name,
+        },
+        defaults: {
+          name: fields.name,
+          description: fields.description,
+          images: imagesJSON,
+          price: fields.price,
+          stock: fields.stock,
+          outstanding: fields.outstanding,
+          categoryId: fields.categoryId,
+        },
+      });
+      if (created) {
+        res.status(201).json({ message: "product created" });
+      } else {
+        res.status(400).json({ message: "product name already exist" });
+      }
+    });
   } catch (error) {
-    res.status(400).json({message: error})
+    res.status(400).json({ message: error });
   }
-  
 }
 
 async function edit(req, res) {
