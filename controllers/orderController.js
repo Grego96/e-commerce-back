@@ -66,11 +66,7 @@ async function store(req, res) {
     }
     res.status(201).json({ message: "Order created!" });
   } catch (error) {
-<<<<<<< HEAD
-    res.status(400).json({ message: error });
-=======
-    res.status(400).json({ message: "empty order", error: error });
->>>>>>> 4b13fa29a859c372f1ef612a176f2739b57db6fd
+    res.status(400).json({ message: "Empty order", error: error });
   }
 }
 
