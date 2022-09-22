@@ -4,7 +4,7 @@ const cors = require("cors");
 const express = require("express");
 const routes = require("./routes");
 const APP_PORT = process.env.APP_PORT || 3000;
-const dbInitialSetup = require("./dbInitialSetup");
+// const dbInitialSetup = require("./dbInitialSetup");
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 routes(app);
 
-dbInitialSetup();
+// dbInitialSetup();
 
 app.listen(APP_PORT, () => {
   console.log(`\n[Express] Servidor corriendo en el puerto ${APP_PORT}.`);
