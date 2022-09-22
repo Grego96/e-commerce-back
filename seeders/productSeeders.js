@@ -10,7 +10,7 @@ module.exports = async () => {
       images: {
         image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6HS_charcaol_side.png",
-        image1:
+        image2:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6HS_charcoal_angle.png",
       },
       stock: 12,
@@ -25,7 +25,7 @@ module.exports = async () => {
       images: {
         image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6ST_charcoal_side.png",
-        image1:
+        image2:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6ST_charcoal_angle.png",
       },
       stock: 15,
@@ -40,7 +40,7 @@ module.exports = async () => {
       images: {
         image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_side.png",
-        image1:
+        image2:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_angle.png",
       },
       stock: 7,
@@ -54,9 +54,9 @@ module.exports = async () => {
       price: 1999,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/WagonOrange_angle_3to4.png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/WagonOrange_side_3to4.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/WagonOrange_angle_3to4.png",
       },
       stock: 10,
       outstanding: true,
@@ -68,9 +68,9 @@ module.exports = async () => {
       price: 1399,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City4HS_Black_angle.png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City4HS_Black_side.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City4HS_Black_angle.png",
       },
       stock: 5,
       outstanding: false,
@@ -82,9 +82,9 @@ module.exports = async () => {
       price: 1999,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City5STPlus_Charcoal_angle.png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City5STCharcoal_side.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City5STPlus_Charcoal_angle.png",
       },
       stock: 5,
       outstanding: false,
@@ -96,9 +96,9 @@ module.exports = async () => {
       price: 1399,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/ExpandBlack_angle.png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/ExpandBlack_Side.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/ExpandBlack_angle.png",
         image3: "ExpandWhite_27.png",
       },
       stock: 9,
@@ -111,9 +111,9 @@ module.exports = async () => {
       price: 899,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/MissionMS_white_angle.png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/MissionMS_white_side.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/MissionMS_white_angle.png",
       },
       stock: 13,
       outstanding: false,
@@ -125,9 +125,9 @@ module.exports = async () => {
       price: 1299,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/US-RadRunner2-Green-Right-Quarter-View-(1).png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/US-RadRunner2-Green-Right-View.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/US-RadRunner2-Green-Right-Quarter-View-(1).png",
       },
       stock: 3,
       outstanding: false,
@@ -139,9 +139,9 @@ module.exports = async () => {
       price: 1899,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_angle.png",
-        image1:
           "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_side.png",
+        image2:
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_angle.png",
       },
       stock: 5,
       outstanding: false,
