@@ -8,14 +8,14 @@ async function index(req, res) {
     if (orders) {
       res.status(200).json(orders);
     } else {
-      res.status(404).json({ message: "orders not found" });
+      res.status(404).json({ message: "Orders not found." });
     }
   } else {
     const orders = await Order.findAll({ include: User });
     if (orders) {
       res.status(200).json(orders);
     } else {
-      res.status(404).json({ message: "no orders found" });
+      res.status(404).json({ message: "No orders found." });
     }
   }
 }
@@ -25,7 +25,7 @@ async function show(req, res) {
   if (order) {
     res.status(200).json(order);
   } else {
-    res.status(404).json({ message: "order not found" });
+    res.status(404).json({ message: "Order not found." });
   }
 }
 
@@ -45,7 +45,7 @@ async function store(req, res) {
       return;
     }
   } catch (error) {
-    res.status(400).json({ message: "error" });
+    res.status(400).json({ message: "Error." });
     return;
   }
   try {
@@ -64,9 +64,9 @@ async function store(req, res) {
       const orderProduct = await Product.findByPk(product.product.id);
       orderProduct.update({ stock: orderProduct.stock - product.quantity });
     }
-    res.status(201).json({ message: "order created" });
+    res.status(201).json({ message: "Order created!" });
   } catch (error) {
-    res.status(400).json({message: error});
+    res.status(400).json({ message: error });
   }
 }
 
@@ -74,9 +74,9 @@ async function destroy(req, res) {
   const order = await Order.findByPk(req.params.id);
   if (order) {
     await order.destroy();
-    res.status(200).json({ message: "product deleted" });
+    res.status(200).json({ message: "Product deleted." });
   } else {
-    res.status(400).json({ message: "product not found" });
+    res.status(400).json({ message: "Product not found." });
   }
 }
 
@@ -97,7 +97,7 @@ async function getUserOrders(req, res) {
   if (orders) {
     res.status(200).json(orders);
   } else {
-    res.status(404).json({ message: "orders not found" });
+    res.status(404).json({ message: "Orders not found." });
   }
 }
 

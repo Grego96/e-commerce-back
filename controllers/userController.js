@@ -40,12 +40,12 @@ async function register(req, res) {
       },
     });
     if (created) {
-      res.status(201).json({ message: "User created" });
+      res.status(201).json({ message: "User created!" });
     } else {
-      res.status(400).json({ message: "email already exist" });
+      res.status(400).json({ message: "Email already exist." });
     }
   } catch (error) {
-    res.status(400).json({message: "A field is missing", error: error});
+    res.status(400).json({ message: "A field is missing", error: error });
     return;
   }
 }
@@ -80,7 +80,7 @@ async function show(req, res) {
   if (user) {
     res.status(200).json(user);
   } else {
-    res.status(404).json({ message: "user not found" });
+    res.status(404).json({ message: "User not found." });
   }
 }
 
@@ -88,9 +88,9 @@ async function destroy(req, res) {
   const user = await User.findByPk(req.params.id);
   if (user) {
     await user.destroy();
-    res.status(200).json({ message: "user deleted" });
+    res.status(200).json({ message: "User deleted." });
   } else {
-    res.status(400).json({ message: "user not found" });
+    res.status(400).json({ message: "User not found." });
   }
 }
 
@@ -109,9 +109,9 @@ async function storeAdminUser(req, res) {
       },
     });
     if (created) {
-      res.status(201).json({ message: "User Adm created" });
+      res.status(201).json({ message: "User admin created." });
     } else {
-      res.status(400).json({ message: "email already exist" });
+      res.status(400).json({ message: "Email already exist." });
     }
   } catch (error) {
     res.status(400).json({ error });

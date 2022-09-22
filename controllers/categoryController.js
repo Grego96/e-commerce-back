@@ -10,7 +10,7 @@ async function show(req, res) {
   if (category) {
     res.status(200).json(category);
   } else {
-    res.status(404).json({message: "category not found"});
+    res.status(404).json({ message: "Category not found." });
   }
 }
 
@@ -24,9 +24,9 @@ async function store(req, res) {
     },
   });
   if (created) {
-    res.status(201).json({ message: "category created" });
+    res.status(201).json({ message: "Category created." });
   } else {
-    res.status(400).json({ message: "category not created" });
+    res.status(400).json({ message: "Category not created." });
   }
 }
 
@@ -34,9 +34,9 @@ async function edit(req, res) {
   const category = await Category.findByPk(req.params.id);
   if (category && req.body.name) {
     await category.update({ name: req.body.name });
-    res.status(200).json({ message: "category updated" });
+    res.status(200).json({ message: "Category updated." });
   } else {
-    res.status(404).json({ message: "category not found" });
+    res.status(404).json({ message: "Category not found." });
   }
 }
 
@@ -44,17 +44,16 @@ async function destroy(req, res) {
   const category = await Category.findByPk(req.params.id);
   if (category) {
     await category.destroy();
-    res.status(200).json({ message: "category deleted" });
+    res.status(200).json({ message: "Category deleted." });
   } else {
-    res.status(404).json({ message: "category not found" });
+    res.status(404).json({ message: "category not found." });
   }
 }
-
 
 module.exports = {
   index,
   show,
   destroy,
   store,
-  edit
+  edit,
 };

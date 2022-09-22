@@ -20,7 +20,7 @@ async function show(req, res) {
   if (product) {
     res.status(200).json(product);
   } else {
-    res.status(404).json({ message: "product not found" });
+    res.status(404).json({ message: "Product not found." });
   }
 }
 
@@ -37,18 +37,17 @@ async function store(req, res) {
         price: req.body.price,
         stock: req.body.stock,
         outstanding: req.body.outstanding,
-        categoryId: req.body.categoryId
+        categoryId: req.body.categoryId,
       },
     });
     if (created) {
-      res.status(201).json({ message: "product created" });
+      res.status(201).json({ message: "Product created!" });
     } else {
-      res.status(400).json({ message: "product name already exist" });
+      res.status(400).json({ message: "Product name already exist." });
     }
   } catch (error) {
-    res.status(400).json({message: error})
+    res.status(400).json({ message: error });
   }
-  
 }
 
 async function edit(req, res) {
@@ -56,13 +55,13 @@ async function edit(req, res) {
   if (product) {
     try {
       await product.update({ ...req.body });
-      res.status(200).json({ message: "product updated" });
+      res.status(200).json({ message: "Product updated." });
     } catch (error) {
       res.send(error);
       // res.status(402).json({ message: "error editing" });
     }
   } else {
-    res.status(402).json({ message: "product not found" });
+    res.status(402).json({ message: "Product not found." });
   }
 }
 
@@ -70,9 +69,9 @@ async function destroy(req, res) {
   const product = await Product.findByPk(req.params.id);
   if (product) {
     await product.destroy();
-    res.status(200).json({ message: "product deleted" });
+    res.status(200).json({ message: "Product deleted." });
   } else {
-    res.status(400).json({ message: "product not found" });
+    res.status(400).json({ message: "Product not found." });
   }
 }
 
