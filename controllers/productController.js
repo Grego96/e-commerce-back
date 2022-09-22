@@ -76,9 +76,11 @@ async function store(req, res) {
         },
       });
       if (created) {
-        res.status(201).json({ message: "product created" });
+        res.status(201).json({ message: "Product created" });
       } else {
-        res.status(400).json({ message: "product name already exist" });
+        res
+          .status(400)
+          .json({ message: "A product with that name already exist" });
       }
     });
   } catch (error) {

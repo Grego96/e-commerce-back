@@ -27,9 +27,9 @@ module.exports = (sequelize, Model, DataTypes) => {
       images: {
         type: DataTypes.JSON,
         allowNull: true,
-        // validate: {
-        //   notEmpty: true,
-        // },
+        validate: {
+          notEmpty: true,
+        },
         defaultValue: { image1: "defaultImage.png" },
       },
       price: {
