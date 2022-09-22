@@ -50,7 +50,7 @@ async function store(req, res) {
   }
   try {
     const order = await Order.create({
-      status: req.body.status,
+      status: "In Progress",
       product_json: req.body.product_json,
       payment_method: req.body.payment_method,
       userId: req.auth.id,
@@ -66,7 +66,11 @@ async function store(req, res) {
     }
     res.status(201).json({ message: "Order created!" });
   } catch (error) {
+<<<<<<< HEAD
     res.status(400).json({ message: error });
+=======
+    res.status(400).json({ message: "empty order", error: error });
+>>>>>>> 4b13fa29a859c372f1ef612a176f2739b57db6fd
   }
 }
 
