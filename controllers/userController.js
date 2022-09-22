@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const db = require("../models")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -40,12 +41,12 @@ async function register(req, res) {
       },
     });
     if (created) {
-      res.status(201).json({ message: "User created" });
+      res.status(201).json({ message: "User created!" });
     } else {
-      res.status(400).json({ message: "email already exist" });
+      res.status(400).json({ message: "Email already exist." });
     }
   } catch (error) {
-    res.status(400).json({message: "A field is missing", error: error});
+    res.status(400).json({ message: "A field is missing", error: error });
     return;
   }
 }
@@ -80,7 +81,7 @@ async function show(req, res) {
   if (user) {
     res.status(200).json(user);
   } else {
-    res.status(404).json({ message: "user not found" });
+    res.status(404).json({ message: "User not found." });
   }
 }
 
@@ -88,9 +89,9 @@ async function destroy(req, res) {
   const user = await User.findByPk(req.params.id);
   if (user) {
     await user.destroy();
-    res.status(200).json({ message: "user deleted" });
+    res.status(200).json({ message: "User deleted." });
   } else {
-    res.status(400).json({ message: "user not found" });
+    res.status(400).json({ message: "User not found." });
   }
 }
 
@@ -109,9 +110,9 @@ async function storeAdminUser(req, res) {
       },
     });
     if (created) {
-      res.status(201).json({ message: "User Adm created" });
+      res.status(201).json({ message: "User admin created." });
     } else {
-      res.status(400).json({ message: "email already exist" });
+      res.status(400).json({ message: "Email already exist." });
     }
   } catch (error) {
     res.status(400).json({ error });
@@ -119,4 +120,16 @@ async function storeAdminUser(req, res) {
   }
 }
 
-module.exports = { login, index, show, register, destroy, storeAdminUser };
+async function resetDb(req, res) {
+  await db.sequelize.sync({ force: true });
+  console.log("[Database] ¡Las tablas fueron creadas!");
+  await require("../seeders/categorySeeders")();
+  await require("../seeders/productSeeders")();
+  await require("../seeders/userSeeders")();
+  await require("../seeders/orderSeeders")();
+
+  console.log("[Database] ¡Los datos de prueba fueron insertados!");
+  res.status(200).json({message: "Se reinició la base de datos"})
+}
+
+module.exports = { login, index, show, register, destroy, storeAdminUser, resetDb };
