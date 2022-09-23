@@ -92,11 +92,45 @@ async function edit(req, res) {
   const product = await Product.findByPk(req.params.id);
   if (product) {
     try {
-      await product.update({ ...req.body });
+      const form = formidable({
+        multiples: true,
+        keepExtensions: true,
+      });
+
+      form.parse(req, async (err, fields, files) => {
+        if (Object.keys(files).length) {
+          const images = [];
+          for (let i = 0; i < Object.entries(files).length; i++) {
+            const img = Object.entries(files)[i][1];
+            const { data, error } = await supabase.storage
+              .from("e-commerce-imgs")
+              .upload(img.newFilename, fs.createReadStream(img.filepath), {
+                cacheControl: "3600",
+                upsert: false,
+                contentType: img.mimetype,
+              });
+            images.push(
+              "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/" +
+                data.Key
+            );
+          }
+
+          const imagesJSON = images.reduce(
+            (k, v, i) => ({ ...k, ["image" + (i + 1)]: v }),
+            {}
+          );
+
+          fields.images = imagesJSON;
+        } else {
+          delete fields.images;
+        }
+        console.log(fields);
+        await product.update({ ...fields });
+      });
+
       res.status(200).json({ message: "Product updated." });
     } catch (error) {
       res.send(error);
-      // res.status(402).json({ message: "error editing" });
     }
   } else {
     res.status(402).json({ message: "Product not found." });
