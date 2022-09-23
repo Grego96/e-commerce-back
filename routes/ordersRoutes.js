@@ -23,7 +23,8 @@ routes.get(
   orderController.getPaymentMethodAttributes
 );
 routes.get("/orders", verifyJwt, adminUserAccess, orderController.index);
-routes.get("/orders/:id", verifyJwt, orderController.show);
+routes.get("/orders/:id", verifyJwt, adminUserAccess, orderController.show);
+routes.patch("/orders/:id", verifyJwt, adminUserAccess , orderController.edit);
 routes.post("/orders", verifyJwt, orderController.store);
 
 module.exports = routes;

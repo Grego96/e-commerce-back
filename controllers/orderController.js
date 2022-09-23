@@ -70,6 +70,16 @@ async function store(req, res) {
   }
 }
 
+async function edit(req, res) {
+  const order = await Order.findByPk(req.params.id);
+  if (order && req.body.status) {
+    await order.update({ status: req.body.status });
+    res.status(200).json({ message: "Order status updated." });
+  } else {
+    res.status(404).json({ message: "Error" });
+  }
+}
+
 async function destroy(req, res) {
   const order = await Order.findByPk(req.params.id);
   if (order) {
@@ -109,4 +119,5 @@ module.exports = {
   show,
   store,
   destroy,
+  edit
 };
