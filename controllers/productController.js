@@ -124,9 +124,7 @@ async function edit(req, res) {
         } else {
           delete fields.images;
         }
-        console.log(fields);
         const x = await product.update({ ...fields });
-        console.log(x);
       });
 
       res.status(200).json({ message: "Product updated." });
