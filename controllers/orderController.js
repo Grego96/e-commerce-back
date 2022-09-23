@@ -66,7 +66,17 @@ async function store(req, res) {
     }
     res.status(201).json({ message: "Order created!" });
   } catch (error) {
-    res.status(400).json({ message: "Empty order", error: error });
+    res.status(400).json({ message: "Empty order or missing information", error: error });
+  }
+}
+
+async function edit(req, res) {
+  const order = await Order.findByPk(req.params.id);
+  if (order && req.body.status) {
+    await order.update({ status: req.body.status });
+    res.status(200).json({ message: "Order status updated." });
+  } else {
+    res.status(404).json({ message: "Error" });
   }
 }
 
@@ -109,4 +119,5 @@ module.exports = {
   show,
   store,
   destroy,
+  edit
 };

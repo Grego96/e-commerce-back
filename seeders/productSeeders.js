@@ -9,9 +9,9 @@ module.exports = async () => {
       price: 1999,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6HS_charcaol_side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/Rover6HS_charcaol_side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6HS_charcoal_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/Rover6HS_charcoal_angle.png",
       },
       stock: 12,
       outstanding: true,
@@ -24,9 +24,9 @@ module.exports = async () => {
       price: 1599,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6ST_charcoal_side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/Rover6ST_charcoal_side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/Rover6ST_charcoal_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/Rover6ST_charcoal_angle.png",
       },
       stock: 15,
       outstanding: true,
@@ -39,9 +39,9 @@ module.exports = async () => {
       price: 1899,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/RunnerPlus_side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/RunnerPlus_angle.png",
       },
       stock: 7,
       outstanding: true,
@@ -54,9 +54,9 @@ module.exports = async () => {
       price: 1999,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/WagonOrange_side_3to4.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/WagonOrange_side_3to4.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/WagonOrange_angle_3to4.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/WagonOrange_angle_3to4.png",
       },
       stock: 10,
       outstanding: true,
@@ -68,9 +68,9 @@ module.exports = async () => {
       price: 1399,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City4HS_Black_side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/City4HS_Black_side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City4HS_Black_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/City4HS_Black_angle.png",
       },
       stock: 5,
       outstanding: false,
@@ -82,9 +82,9 @@ module.exports = async () => {
       price: 1999,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City5STCharcoal_side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/City5STCharcoal_side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/City5STPlus_Charcoal_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/City5STPlus_Charcoal_angle.png",
       },
       stock: 5,
       outstanding: false,
@@ -96,9 +96,9 @@ module.exports = async () => {
       price: 1399,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/ExpandBlack_Side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/ExpandBlack_Side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/ExpandBlack_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/ExpandBlack_angle.png",
         image3: "ExpandWhite_27.png",
       },
       stock: 9,
@@ -111,9 +111,9 @@ module.exports = async () => {
       price: 899,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/MissionMS_white_side.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/MissionMS_white_side.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/MissionMS_white_angle.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/MissionMS_white_angle.png",
       },
       stock: 13,
       outstanding: false,
@@ -125,25 +125,11 @@ module.exports = async () => {
       price: 1299,
       images: {
         image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/US-RadRunner2-Green-Right-View.png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/US-RadRunner2-Green-Right-View.png",
         image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/US-RadRunner2-Green-Right-Quarter-View-(1).png",
+          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/e-commerce-imgs/US-RadRunner2-Green-Right-Quarter-View-(1).png",
       },
       stock: 3,
-      outstanding: false,
-      categoryId: 1,
-    },
-    {
-      name: "RadRunner Plus",
-      description: `Perfect for errands, perfect for fun, this electric utility bike comes fully-loaded with exclusive accessories to elevate your everyday experiences. The passenger package invites you to bring a friend for the ride, while the premium headlight gives you the confidence to hit the road any time.`,
-      price: 1899,
-      images: {
-        image1:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_side.png",
-        image2:
-          "https://owyqzdztdgacarhlwyux.supabase.co/storage/v1/object/public/RunnerPlus_angle.png",
-      },
-      stock: 5,
       outstanding: false,
       categoryId: 1,
     },
