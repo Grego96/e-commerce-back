@@ -1,6 +1,6 @@
-## e-commerce-back
+# e-commerce-back
 
-# tecnologías usadas
+## tecnologías usadas
 -Node
 -MySql
 -React
